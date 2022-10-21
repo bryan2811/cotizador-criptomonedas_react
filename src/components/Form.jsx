@@ -33,7 +33,7 @@ const Form = ({ setCurrencies }) => {
 
   useEffect(() => {
     const requestAPI = async () => {
-      const url = `https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD`
+      const url = `https://min-api.cryptocompare.com/data/top/mktcapfull?limit=15&tsym=USD`
       const response = await fetch(url)
       const result = await response.json()
       
