@@ -24,7 +24,7 @@ const InputSubmit = styled.input`
   }
 `
 
-const Form = () => {
+const Form = ({ setCurrencies }) => {
 
   const [criptos, setCriptos] = useState([]);
   const [error, setError] = useState(false);
@@ -35,9 +35,9 @@ const Form = () => {
     const requestAPI = async () => {
       const url = `https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD`
       const response = await fetch(url)
-      const outputData = await response.json()
+      const result = await response.json()
       
-      const CriptosArray = outputData.Data.map(cripto => {
+      const CriptosArray = result.Data.map(cripto => {
         const object = {
           id: cripto.CoinInfo.Name,
           name: cripto.CoinInfo.FullName
@@ -53,16 +53,23 @@ const Form = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(currency, cryptocurrency);
+
     if([currency, cryptocurrency].includes('')) {
-      console.log('error');
+      setError(true);
+      
       return;
     }
+
+    setError(false);
+    setCurrencies({
+      currency,
+      cryptocurrency
+    });
   }
 
   return (
     <>
-      {error && <p>All fields are required</p>}
+      {error && <Error>All fields are required</Error>}
       <form onSubmit={handleSubmit}>
         <SelectCurrency />
         <SelectCryptocurrency />
