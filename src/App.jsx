@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import styled from '@emotion/styled'
 
-import ImagenCripto from './img/imagen-criptos.png'
-import Formulario from './components/Formulario'
+import CriptoImage from './img/criptos-image.png'
+import Form from './components/Form'
 
-const Contenedor = styled.div`
+const Container = styled.div`
   max-width: 900px;
   margin: 0 auto;
   width: 90%;
@@ -15,7 +15,7 @@ const Contenedor = styled.div`
   }
 `
 
-const Imagen = styled.img`
+const Image = styled.img`
   max-width: 400px;
   width: 80%;
   margin: 100px auto 0 auto;
@@ -43,15 +43,15 @@ const Heading = styled.h1`
 
 function App() {
   return (
-    <Contenedor>
-      <Imagen src={ImagenCripto} alt="Imagen Cripto" />
+    <Container>
+      <Image src={CriptoImage} alt="Cripto Image" />
 
       <div>
-        <Heading>Cotiza Criptomonedas al Instante</Heading>
+        <Heading>Instant Cryptocurrency Quotes</Heading>
 
-        <Formulario />
+        <Form />
       </div>
-    </Contenedor>
+    </Container>
   )
 }
 
